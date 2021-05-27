@@ -30,7 +30,7 @@ def initDatab():
 def newBook():
   form = BookForm()
 
-  if form.validate_on_submit():
+  if form.validate_on_submit(): #this whole block
     book = Book()
     form.populate_obj(book)
     db.session.add(book)

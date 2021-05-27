@@ -1,0 +1,10 @@
+{% set title = "Comics" %}
+
+{% extends "base.html" %}
+
+{% block content %}
+{% for comic in comics %}
+<p> {{ comic.name }} </p>
+{% endfor %}
+{% endblock content %}
+
