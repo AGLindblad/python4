@@ -5,7 +5,7 @@ from flask_wtf import FlaskForm #m
 from wtforms.ext.sqlalchemy.orm import model_form #m
 
 app = Flask(__name__) #m
-app.secret_key = 'XB32shoh4xai2Zohqu0o6rtg6' 
+app.secret_key = 'XB32shoh4xai2Zohqu0o6rtg6'
 db = SQLAlchemy(app)
 
 class Comic(db.Model): #m
@@ -57,5 +57,5 @@ def index():
   comics = Comic.query.all()
   return render_template("index.html", comics = comics)
 
-if __name__=="__main__": #m 
+if __name__=="__main__": #m
   app.run(debug=True)
