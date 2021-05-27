@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 from flask_wtf import FlaskForm #m
@@ -25,16 +25,21 @@ def iniDb():
   db.session.add(comic) #m
   db.session.commit()
 
+@app.route ("/<int:id>/edit", methods=["GET", "POST"])
 @app.route ("/add", methods=["GET", "POST"])
-def newComic():
-  form = ComicForm()
+def newComic(id=None):
+  comic = Comic ()
+  if id:
+    comic = Comic.query.get_or_404(id)
+
+  form = ComicForm(obj=comic)
 
   if form.validate_on_submit():
-    comic = Comic()
     form.populate_obj(comic)
     db.session.add(comic)
     db.session.commit()
-    print("Jee")
+    flash("Lisätty kantaan")
+    return redirect ("/")
 
   return render_template("add.html", form = form)
 
