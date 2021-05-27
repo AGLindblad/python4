@@ -1,0 +1,17 @@
+{% set title = "Our customers" %}
+
+{% extends "base.html" %}
+
+{% block content %}
+{% for customer in customers %}
+  <p>
+    {{ customer.name }}<br>
+    {{ customer.tele }}<br>
+    {{ customer.email }}<br>
+    {{ customer.company }}<br>
+    <a href="/{{ customer.id }}/edit">Edit contact</a>
+    <a href="/{{ customer.id }}/delete">Delete customer</a>
+  </p>
+{% endfor %}
+{% endblock content %}
+
