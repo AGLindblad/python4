@@ -43,6 +43,15 @@ def newComic(id=None):
 
   return render_template("add.html", form = form)
 
+@app.route("/<int:id>/delete")
+def deleteComic(id):
+  comic = Comic.query.get_or_404(id)
+  db.session.delete(comic)
+  db.session.commit()
+
+  flash("Poistettu")
+  return redirect("/")
+
 @app.route("/")
 def index():
   comics = Comic.query.all()

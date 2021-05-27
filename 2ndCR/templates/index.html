@@ -6,7 +6,9 @@
 {% for comic in comics %}
   <p>
     {{ comic.name }}
-    <a href="{{ comic.id }}/edit">Edit comic</a>    
+    <a href="/{{ comic.id }}/edit">Edit comic</a>
+    <a href="/{{ comic.id }}/delete">Delete comic</a>
+    
   </p>
 {% endfor %}
 {% endblock content %}
