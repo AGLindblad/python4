@@ -1,0 +1,11 @@
+{% set title="Books by people" %}
+{% extends "base.html" %}
+
+{% block content %}
+<p> tewsting testing </p>
+
+{% for book in books %}
+<p> {{ book.name }}: {{ book.author }} </p>
+{% endfor %}
+
+{%endblock content%}
