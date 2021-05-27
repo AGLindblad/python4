@@ -1,17 +1,19 @@
-from flask import Flask, render_template, flash, redirect
-from flask_sqlalchemy import SQLAlchemy #m
+from flask import Flask, render_template, flash, redirect #sudo apt-get install -y python3-flask
+from flask_sqlalchemy import SQLAlchemy #m sudo apt-get install -y python3-flask-sqlalchemy
 from flask_wtf import FlaskForm
-from wtforms.ext.sqlalchemy.orm import model_form #m
+from wtforms.ext.sqlalchemy.orm import model_form #m sudo apt-get install -y python3-flaskext.wtf
 
 app = Flask(__name__) #m
-app.secret_key = 'oa8aa2ahVif+aephohSa2cei'
+app.secret_key = 'oa8aa2ahVif+aephohSa2ceiW'
 db = SQLAlchemy(app)
 
 class Customer(db.Model): #m
   id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String, nullable=False)
+  surname = db.Column(db.String, nullable=False)
+  firstname = db.Column(db.String, nullable=False)
   tele = db.Column(db.String, nullable=False)
   email = db.Column(db.String, nullable=False)
+  city = db.Column(db.String, nullable=False)
   company = db.Column(db.String, nullable=True)
 
 CustomerForm = model_form(Customer, base_class=FlaskForm, db_session=db.session) #m
@@ -20,10 +22,10 @@ CustomerForm = model_form(Customer, base_class=FlaskForm, db_session=db.session)
 def iniDb():
   db.create_all()
 
-  customer = Customer(name="Harry Callahan", tele= "0041233355", email= "harry@dirty.com", company= "LAPD")
+  customer = Customer(surname="Callahan", firstname="Harry", tele= "0041233355", email= "harry@dirty.com", city= "San Francisco",  company= "SFPD")
   db.session.add(customer) #m
 
-  customer = Customer(name="John Matrix", tele= "004467884", email= "arnold@commando.com", company= "Mercenary Inc")
+  customer = Customer(surname="Matrix", firstname="Harry", tele= "004467884", email= "arnold@commando.com", city= "Los Angeles", company= "Mercenary Inc")
   db.session.add(customer) #m
   db.session.commit()
 

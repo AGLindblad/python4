@@ -5,9 +5,11 @@
 {% block content %}
 {% for customer in customers %}
   <p>
-    {{ customer.name }}<br>
+    {{ customer.surname }},
+    {{ customer.firstname }}<br>
     {{ customer.tele }}<br>
     {{ customer.email }}<br>
+    {{ customer.city }}<br>
     {{ customer.company }}<br>
     <a href="/{{ customer.id }}/edit">Edit contact</a>
     <a href="/{{ customer.id }}/delete">Delete customer</a>
